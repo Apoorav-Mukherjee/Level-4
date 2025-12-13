@@ -110,7 +110,7 @@ const CreativePortfolio = () => {
           <div className="flex justify-between items-center h-20">
             <div className="flex-shrink-0">
               <span className="text-2xl font-light tracking-wider">
-                <span className="font-bold">YOUR</span>NAME
+                <span className="font-bold">AP</span>BROS
               </span>
             </div>
             
@@ -181,7 +181,7 @@ const CreativePortfolio = () => {
                   Full-Stack Developer & Problem Solver
                 </div>
                 <h1 className="text-5xl lg:text-7xl font-light mb-8 leading-tight">
-                  I craft digital experiences that{' '}
+                  We craft digital experiences that{' '}
                   <span className="font-bold italic">matter</span>
                 </h1>
                 <p className="text-xl lg:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
@@ -192,7 +192,7 @@ const CreativePortfolio = () => {
                     onClick={() => setActiveSection('work')}
                     className="px-10 py-4 bg-white text-black hover:bg-gray-200 transition-all duration-300 uppercase tracking-widest text-sm font-semibold transform hover:scale-105"
                   >
-                    View My Work
+                    View Our Work
                   </button>
                   <button
                     onClick={() => setActiveSection('contact')}
@@ -230,19 +230,19 @@ const CreativePortfolio = () => {
             {/* Philosophy Section */}
             <section className="py-32 px-6 lg:px-12 bg-white text-black">
               <div className="max-w-4xl mx-auto">
-                <div className="text-sm uppercase tracking-widest text-gray-500 mb-6">My Approach</div>
+                <div className="text-sm uppercase tracking-widest text-gray-500 mb-6">Our Approach</div>
                 <h2 className="text-4xl lg:text-5xl font-light mb-12 leading-tight">
-                  I believe great software is <span className="italic font-bold">invisible</span>
+                  We believe great software is <span className="italic font-bold">invisible</span>
                 </h2>
                 <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
                   <p>
                     It doesn't scream for attention. It doesn't get in the way. It simply works, quietly solving problems and creating value in the background.
                   </p>
                   <p>
-                    My philosophy is simple: understand the problem deeply, design thoughtfully, build meticulously, and iterate relentlessly. Every project is a partnership, and your success is my success.
+                    Our philosophy is simple: understand the problem deeply, design thoughtfully, build meticulously, and iterate relentlessly. Every project is a partnership, and your success is our success.
                   </p>
                   <p>
-                    I don't just write code—I craft solutions that align with your business goals, scale with your growth, and stand the test of time.
+                    We don't just write code—We craft solutions that align with your business goals, scale with your growth, and stand the test of time.
                   </p>
                 </div>
               </div>
@@ -626,17 +626,17 @@ const CreativePortfolio = () => {
       <footer className="border-t border-gray-800 py-12 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-gray-400 text-sm">
-            © 2024 YourName. Crafted with care.
+            © 2026 APBROS. All rights reserved.
           </div>
           <div className="flex gap-6">
             <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300 text-sm uppercase tracking-wider">
-              LinkedIn
+              LinkedIn <Linkedin size={20} className="inline-block" text-gray-400 hover:text-white transition-colors duration-300 inline-block />
             </a>
             <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300 text-sm uppercase tracking-wider">
-              GitHub
+              GitHub <Github size={20} className="inline-block" text-gray-400 hover:text-white transition-colors duration-300 inline-block />
             </a>
             <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300 text-sm uppercase tracking-wider">
-              Email
+              Email <Mail size={20} className="inline-block" text-gray-400 hover:text-white transition-colors duration-300 inline-block />
             </a>
           </div>
         </div>
