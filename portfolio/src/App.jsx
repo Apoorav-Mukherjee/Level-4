@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Menu, X, ArrowRight, ChevronLeft, ChevronRight, Mail, Linkedin, Github, Coffee } from 'lucide-react';
 
 const CreativePortfolio = () => {
@@ -7,6 +7,11 @@ const CreativePortfolio = () => {
   const [currentProjectSlide, setCurrentProjectSlide] = useState(0);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  // State for image carousel within each project
+  const [currentImageIndex, setCurrentImageIndex] = useState({});
+  // Touch/swipe support state
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
 
   useEffect(() => {
     setIsVisible(true);
@@ -21,48 +26,85 @@ const CreativePortfolio = () => {
 
   const projects = [
     {
-      title: 'E-Commerce Platform Redesign',
-      client: 'RetailCo',
+      title: 'Gym Website',
+      client: 'Fitness Brand',
       year: '2024',
-      description: 'Transformed a legacy e-commerce system into a modern, conversion-optimized platform',
-      challenge: 'High cart abandonment and poor mobile experience',
-      solution: 'Built a React-based PWA with seamless checkout flow',
-      results: ['45% increase in mobile conversions', '2.3s average load time', '8x faster page transitions'],
-      tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      image: '🛍️'
+      description: 'High-performance fitness website focused on lead generation and class bookings.',
+      challenge: 'Low conversion and outdated UI.',
+      solution: 'Modern UI, fast load times, mobile-first layout.',
+      results: ['+3x inquiry rate', '<2s load time'],
+      tags: ['React', 'Tailwind', 'Vite'],
+      images: [
+        '/assets/work/gym/1.png',
+        '/assets/work/gym/2.png',
+        '/assets/work/gym/3.png',
+        '/assets/work/gym/4.png'
+      ]
     },
     {
-      title: 'Healthcare Analytics Dashboard',
-      client: 'MedTech Solutions',
+      title: 'Restaurant Website',
+      client: 'Restaurant Brand',
       year: '2024',
-      description: 'Real-time patient data visualization for healthcare professionals',
-      challenge: 'Complex data needed to be intuitive and accessible',
-      solution: 'Interactive dashboard with predictive analytics',
-      results: ['90% reduction in report generation time', 'HIPAA compliant', 'Used by 500+ clinicians'],
-      tags: ['Vue.js', 'D3.js', 'Python', 'PostgreSQL'],
-      image: '⚕️'
+      description: 'Digital presence for a restaurant with menu, reservations, and branding.',
+      challenge: 'No online visibility and poor UX.',
+      solution: 'Elegant design, clear CTAs, optimized menu layout.',
+      results: ['Increased table reservations', 'Better mobile engagement'],
+      tags: ['React', 'CSS', 'Netlify'],
+      images: [
+        '/assets/work/restaurant/1.png',
+        '/assets/work/restaurant/2.png',
+        '/assets/work/restaurant/3.png',
+        '/assets/work/restaurant/4.png',
+        '/assets/work/restaurant/5.png'
+      ]
     },
     {
-      title: 'Financial Planning SaaS',
-      client: 'WealthWise',
-      year: '2023',
-      description: 'AI-powered personal finance management platform',
-      challenge: 'Making complex financial concepts accessible',
-      solution: 'Intuitive interface with smart recommendations',
-      results: ['$1.2M ARR in first year', '15,000+ active users', '4.8/5 app store rating'],
-      tags: ['Next.js', 'TypeScript', 'TensorFlow', 'AWS'],
-      image: '💰'
+      title: 'Cafe Website',
+      client: 'Cafe Brand',
+      year: '2024',
+      description: 'Minimal aesthetic cafe website with storytelling focus.',
+      challenge: 'Weak brand identity online.',
+      solution: 'Visual-first layout with smooth animations.',
+      results: ['Improved brand recall', 'Higher social traffic'],
+      tags: ['React', 'Framer Motion'],
+      images: [
+        '/assets/work/cafe/1.png',
+        '/assets/work/cafe/2.png',
+        '/assets/work/cafe/3.png'
+      ]
     },
     {
-      title: 'Supply Chain Optimization',
-      client: 'LogisticsPro',
-      year: '2023',
-      description: 'Real-time tracking and route optimization system',
-      challenge: 'Inefficient routing costing $200K annually',
-      solution: 'ML-powered logistics management platform',
-      results: ['35% reduction in fuel costs', 'Real-time tracking for 1000+ vehicles', '99.8% on-time delivery'],
-      tags: ['Angular', 'GraphQL', 'Kubernetes', 'GCP'],
-      image: '🚚'
+      title: 'Guest House Website',
+      client: 'Hospitality Brand',
+      year: '2024',
+      description: 'Booking-focused website for a guest house.',
+      challenge: 'Manual booking process.',
+      solution: 'Clean UX with booking inquiry flow.',
+      results: ['Reduced booking friction', 'Higher inquiries'],
+      tags: ['React', 'Node.js'],
+      images: [
+        '/assets/work/guesthouse/1.png',
+        '/assets/work/guesthouse/2.png',
+        '/assets/work/guesthouse/3.png',
+        '/assets/work/guesthouse/4.png'
+      ]
+    },
+    {
+      title: 'Clothing Website',
+      client: 'Fashion Brand',
+      year: '2024',
+      description: 'Fashion website emphasizing product presentation.',
+      challenge: 'Low engagement and cluttered layout.',
+      solution: 'Grid-based design, performance optimization.',
+      results: ['Improved session time', 'Faster page loads'],
+      tags: ['React', 'Tailwind'],
+      images: [
+        '/assets/work/clothing/1.png',
+        '/assets/work/clothing/2.png',
+        '/assets/work/clothing/3.png',
+        '/assets/work/clothing/4.png',
+        '/assets/work/clothing/5.png'
+      ]
     }
   ];
 
@@ -89,10 +131,85 @@ const CreativePortfolio = () => {
 
   const nextProject = () => {
     setCurrentProjectSlide((prev) => (prev + 1) % projects.length);
+    // Reset image index when changing projects
+    setCurrentImageIndex({});
   };
 
   const prevProject = () => {
     setCurrentProjectSlide((prev) => (prev - 1 + projects.length) % projects.length);
+    // Reset image index when changing projects
+    setCurrentImageIndex({});
+  };
+
+  const nextImage = useCallback((projectIndex) => {
+    const project = projects[projectIndex];
+    setCurrentImageIndex(prev => ({
+      ...prev,
+      [projectIndex]: ((prev[projectIndex] || 0) + 1) % project.images.length
+    }));
+  }, [projects]);
+
+  const prevImage = useCallback((projectIndex) => {
+    const project = projects[projectIndex];
+    setCurrentImageIndex(prev => ({
+      ...prev,
+      [projectIndex]: ((prev[projectIndex] || 0) - 1 + project.images.length) % project.images.length
+    }));
+  }, [projects]);
+
+  const goToImage = (projectIndex, imageIndex) => {
+    setCurrentImageIndex(prev => ({
+      ...prev,
+      [projectIndex]: imageIndex
+    }));
+  };
+
+  // Keyboard navigation for image carousel
+  useEffect(() => {
+    if (activeSection !== 'work') return;
+
+    const handleKeyPress = (e) => {
+      const project = projects[currentProjectSlide];
+      const currentIdx = currentImageIndex[currentProjectSlide] || 0;
+
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevImage(currentProjectSlide);
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        nextImage(currentProjectSlide);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [activeSection, currentProjectSlide, currentImageIndex, prevImage, nextImage]);
+
+  // Touch/swipe support
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      nextImage(currentProjectSlide);
+    }
+    if (isRightSwipe) {
+      prevImage(currentProjectSlide);
+    }
   };
 
   useEffect(() => {
@@ -306,79 +423,158 @@ const CreativePortfolio = () => {
               {/* Project Slideshow */}
               <div className="relative">
                 <div className="overflow-hidden">
-                  {projects.map((project, index) => (
-                    <div
-                      key={index}
-                      className={`transition-all duration-700 ${
-                        index === currentProjectSlide
-                          ? 'opacity-100 relative'
-                          : 'opacity-0 absolute inset-0 pointer-events-none'
-                      }`}
-                    >
-                      <div className="grid lg:grid-cols-2 gap-12 items-center">
-                        {/* Project Visual */}
-                        <div className="relative group">
-                          <div className="aspect-square bg-gradient-to-br from-gray-900 to-gray-800 rounded-lg flex items-center justify-center text-8xl transform transition-transform duration-500 group-hover:scale-105">
-                            {project.image}
-                          </div>
-                          <div className="absolute inset-0 border border-white opacity-0 group-hover:opacity-20 rounded-lg transition-opacity duration-500"></div>
-                        </div>
+                  {projects.map((project, index) => {
+                    const currentImgIdx = currentImageIndex[index] || 0;
+                    const isActive = index === currentProjectSlide;
 
-                        {/* Project Info */}
-                        <div className="space-y-6">
-                          <div className="flex items-center gap-4 text-sm text-gray-400 uppercase tracking-widest">
-                            <span>{project.client}</span>
-                            <span>•</span>
-                            <span>{project.year}</span>
-                          </div>
-                          <h2 className="text-4xl font-light">{project.title}</h2>
-                          <p className="text-xl text-gray-400 leading-relaxed">
-                            {project.description}
-                          </p>
-
-                          <div className="space-y-4 pt-4">
-                            <div>
-                              <div className="text-sm uppercase tracking-wider text-gray-500 mb-2">Challenge</div>
-                              <p className="text-gray-300">{project.challenge}</p>
-                            </div>
-                            <div>
-                              <div className="text-sm uppercase tracking-wider text-gray-500 mb-2">Solution</div>
-                              <p className="text-gray-300">{project.solution}</p>
-                            </div>
-                            <div>
-                              <div className="text-sm uppercase tracking-wider text-gray-500 mb-2">Results</div>
-                              <ul className="space-y-2">
-                                {project.results.map((result, i) => (
-                                  <li key={i} className="flex items-start">
-                                    <span className="text-white mr-2">→</span>
-                                    <span className="text-gray-300">{result}</span>
-                                  </li>
+                    return (
+                      <div
+                        key={index}
+                        className={`transition-all duration-700 ${
+                          isActive
+                            ? 'opacity-100 relative'
+                            : 'opacity-0 absolute inset-0 pointer-events-none'
+                        }`}
+                      >
+                        <div className="grid lg:grid-cols-2 gap-12 items-center">
+                          {/* Project Image Carousel */}
+                          <div className="relative group">
+                            <div 
+                              className="relative aspect-square bg-gradient-to-br from-gray-900 to-gray-800 rounded-lg overflow-hidden"
+                              onTouchStart={onTouchStart}
+                              onTouchMove={onTouchMove}
+                              onTouchEnd={onTouchEnd}
+                            >
+                              {/* Images */}
+                              <div className="relative w-full h-full">
+                                {project.images.map((img, imgIndex) => (
+                                  <div
+                                    key={imgIndex}
+                                    className={`absolute inset-0 transition-all duration-500 ${
+                                      imgIndex === currentImgIdx
+                                        ? 'opacity-100 translate-x-0'
+                                        : imgIndex < currentImgIdx
+                                        ? 'opacity-0 -translate-x-full'
+                                        : 'opacity-0 translate-x-full'
+                                    }`}
+                                  >
+                                    <img
+                                      src={img}
+                                      alt={`${project.title} - Screenshot ${imgIndex + 1}`}
+                                      className="w-full h-full object-cover"
+                                      loading="lazy"
+                                      onError={(e) => {
+                                        // Fallback placeholder if image doesn't exist
+                                        console.error(`Failed to load image: ${img}`);
+                                        e.target.style.display = 'none';
+                                        const placeholder = document.createElement('div');
+                                        placeholder.className = 'w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900 text-gray-500 text-sm';
+                                        placeholder.textContent = `Image ${imgIndex + 1} not found`;
+                                        e.target.parentElement.appendChild(placeholder);
+                                      }}
+                                    />
+                                  </div>
                                 ))}
-                              </ul>
+                              </div>
+
+                              {/* Navigation Arrows */}
+                              {project.images.length > 1 && (
+                                <>
+                                  <button
+                                    onClick={() => prevImage(index)}
+                                    className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-black bg-opacity-50 hover:bg-opacity-80 border border-gray-700 hover:border-white transition-all duration-300 opacity-0 group-hover:opacity-100 z-10"
+                                    aria-label="Previous image"
+                                  >
+                                    <ChevronLeft size={20} className="text-white" />
+                                  </button>
+                                  <button
+                                    onClick={() => nextImage(index)}
+                                    className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-black bg-opacity-50 hover:bg-opacity-80 border border-gray-700 hover:border-white transition-all duration-300 opacity-0 group-hover:opacity-100 z-10"
+                                    aria-label="Next image"
+                                  >
+                                    <ChevronRight size={20} className="text-white" />
+                                  </button>
+                                </>
+                              )}
+
+                              {/* Pagination Dots */}
+                              {project.images.length > 1 && (
+                                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                                  {project.images.map((_, imgIndex) => (
+                                    <button
+                                      key={imgIndex}
+                                      onClick={() => goToImage(index, imgIndex)}
+                                      className={`transition-all duration-300 rounded-full ${
+                                        imgIndex === currentImgIdx
+                                          ? 'w-8 h-2 bg-white'
+                                          : 'w-2 h-2 bg-gray-600 hover:bg-gray-400'
+                                      }`}
+                                      aria-label={`Go to image ${imgIndex + 1}`}
+                                    />
+                                  ))}
+                                </div>
+                              )}
                             </div>
+                            <div className="absolute inset-0 border border-white opacity-0 group-hover:opacity-20 rounded-lg transition-opacity duration-500 pointer-events-none"></div>
                           </div>
 
-                          <div className="flex flex-wrap gap-2 pt-4">
-                            {project.tags.map((tag, i) => (
-                              <span
-                                key={i}
-                                className="px-4 py-2 border border-gray-700 text-sm uppercase tracking-wider hover:bg-white hover:text-black transition-colors duration-300"
-                              >
-                                {tag}
-                              </span>
-                            ))}
+                          {/* Project Info */}
+                          <div className="space-y-6">
+                            <div className="flex items-center gap-4 text-sm text-gray-400 uppercase tracking-widest">
+                              <span>{project.client}</span>
+                              <span>•</span>
+                              <span>{project.year}</span>
+                            </div>
+                            <h2 className="text-4xl font-light">{project.title}</h2>
+                            <p className="text-xl text-gray-400 leading-relaxed">
+                              {project.description}
+                            </p>
+
+                            <div className="space-y-4 pt-4">
+                              <div>
+                                <div className="text-sm uppercase tracking-wider text-gray-500 mb-2">Challenge</div>
+                                <p className="text-gray-300">{project.challenge}</p>
+                              </div>
+                              <div>
+                                <div className="text-sm uppercase tracking-wider text-gray-500 mb-2">Solution</div>
+                                <p className="text-gray-300">{project.solution}</p>
+                              </div>
+                              <div>
+                                <div className="text-sm uppercase tracking-wider text-gray-500 mb-2">Results</div>
+                                <ul className="space-y-2">
+                                  {project.results.map((result, i) => (
+                                    <li key={i} className="flex items-start">
+                                      <span className="text-white mr-2">→</span>
+                                      <span className="text-gray-300">{result}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            </div>
+
+                            <div className="flex flex-wrap gap-2 pt-4">
+                              {project.tags.map((tag, i) => (
+                                <span
+                                  key={i}
+                                  className="px-4 py-2 border border-gray-700 text-sm uppercase tracking-wider hover:bg-white hover:text-black transition-colors duration-300"
+                                >
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
 
-                {/* Navigation */}
+                {/* Project Navigation */}
                 <div className="flex items-center justify-between mt-12">
                   <button
                     onClick={prevProject}
                     className="p-4 border border-gray-700 hover:bg-white hover:text-black transition-all duration-300 group"
+                    aria-label="Previous project"
                   >
                     <ChevronLeft size={24} />
                   </button>
@@ -387,12 +583,16 @@ const CreativePortfolio = () => {
                     {projects.map((_, index) => (
                       <button
                         key={index}
-                        onClick={() => setCurrentProjectSlide(index)}
+                        onClick={() => {
+                          setCurrentProjectSlide(index);
+                          setCurrentImageIndex({});
+                        }}
                         className={`transition-all duration-300 ${
                           index === currentProjectSlide
                             ? 'w-12 h-1 bg-white'
                             : 'w-8 h-1 bg-gray-700 hover:bg-gray-500'
                         }`}
+                        aria-label={`Go to project ${index + 1}`}
                       />
                     ))}
                   </div>
@@ -400,6 +600,7 @@ const CreativePortfolio = () => {
                   <button
                     onClick={nextProject}
                     className="p-4 border border-gray-700 hover:bg-white hover:text-black transition-all duration-300 group"
+                    aria-label="Next project"
                   >
                     <ChevronRight size={24} />
                   </button>
