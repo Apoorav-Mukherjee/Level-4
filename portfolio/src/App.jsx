@@ -628,7 +628,7 @@ const CreativePortfolio = () => {
                     </div>
                     <h2 className="text-3xl font-light mb-4">Nice to meet you</h2>
                     <p className="text-gray-400 leading-relaxed mb-6">
-                      I'm a developer who loves solving complex problems with simple, elegant solutions.
+                      We are a team of developers and designers who love solving complex problems with simple, elegant solutions.
                     </p>
                     <div className="flex gap-4">
                       <a href="#" className="p-3 border border-gray-700 hover:bg-white hover:text-black transition-all duration-300">
@@ -649,15 +649,15 @@ const CreativePortfolio = () => {
                   <div>
                     <div className="text-sm uppercase tracking-widest text-gray-500 mb-4">Background</div>
                     <p className="text-xl text-gray-300 leading-relaxed mb-6">
-                      I've been building for the web for over 8 years, working with everyone from scrappy startups to Fortune 500 companies. My journey started with a simple curiosity about how things work, which evolved into a passion for creating digital products that make a real difference.
+                    We have been building for the web for over 8 years, working with everyone from scrappy startups to Fortune 500 companies. Our journey started with a simple curiosity about how things work, which evolved into a passion for creating digital products that make a real difference.
                     </p>
                     <p className="text-lg text-gray-400 leading-relaxed">
-                      What drives me isn't just writing code—it's the moment when a client sees their vision come to life, when users find joy in a seamless experience, when a business problem gets solved elegantly.
+                      What drives us isn't just writing code—it's the moment when a client sees their vision come to  life, when users find joy in a seamless experience, when a business problem gets solved elegantly.
                     </p>
                   </div>
 
                   <div>
-                    <div className="text-sm uppercase tracking-widest text-gray-500 mb-4">What I Do</div>
+                    <div className="text-sm uppercase tracking-widest text-gray-500 mb-4">What We Do</div>
                     <div className="grid sm:grid-cols-2 gap-6">
                       <div className="border-l-2 border-white pl-4">
                         <h3 className="font-semibold mb-2">Frontend Development</h3>
@@ -681,7 +681,7 @@ const CreativePortfolio = () => {
                   <div>
                     <div className="text-sm uppercase tracking-widest text-gray-500 mb-4">Beyond Code</div>
                     <p className="text-gray-400 leading-relaxed">
-                      When I'm not coding, you'll find me exploring new coffee shops ☕, reading about design and psychology 📚, or tinkering with side projects that probably won't see the light of day (but teach me something new every time).
+                      When we're not coding, you'll find us exploring new coffee shops ☕, reading about design and psychology 📚, or tinkering with side projects that probably won't see the light of day (but teach us something new every time).
                     </p>
                   </div>
 
@@ -691,7 +691,7 @@ const CreativePortfolio = () => {
                       <h3 className="text-xl font-semibold">Let's work together</h3>
                     </div>
                     <p className="mb-6 text-gray-700">
-                      I'm always interested in hearing about new projects and opportunities. Whether you have a specific project in mind or just want to chat about ideas, I'd love to connect.
+                    We are always interested in hearing about new projects and opportunities. Whether you have a specific project in mind or just want to chat about ideas, we'd love to connect.
                     </p>
                     <button
                       onClick={() => setActiveSection('contact')}
