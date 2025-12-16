@@ -716,7 +716,7 @@ const CreativePortfolio = () => {
                   Let's create something <span className="font-bold italic">amazing</span>
                 </h1>
                 <p className="text-xl text-gray-400">
-                  I'm currently available for freelance projects and full-time opportunities
+                 We are currently available for freelance projects and full-time opportunities
                 </p>
               </div>
 
@@ -726,7 +726,7 @@ const CreativePortfolio = () => {
                   <div>
                     <div className="text-sm uppercase tracking-wider text-gray-500 mb-3">Email</div>
                     <a href="mailto:hello@yourname.com" className="text-2xl hover:text-gray-400 transition-colors duration-300">
-                      hello@yourname.com
+                      apooravmukherjee@gmail.com
                     </a>
                   </div>
                   
@@ -734,13 +734,16 @@ const CreativePortfolio = () => {
                     <div className="text-sm uppercase tracking-wider text-gray-500 mb-3">Social</div>
                     <div className="space-y-2">
                       <a href="#" className="block text-lg hover:text-gray-400 transition-colors duration-300">
-                        LinkedIn →
+                        LinkedIn → 
                       </a>
                       <a href="#" className="block text-lg hover:text-gray-400 transition-colors duration-300">
-                        GitHub →
+                        GitHub → 
                       </a>
                       <a href="#" className="block text-lg hover:text-gray-400 transition-colors duration-300">
-                        Twitter →
+                        Instagram → 
+                      </a>
+                      <a href="#" className="block text-lg hover:text-gray-400 transition-colors duration-300">
+                        X → 
                       </a>
                     </div>
                   </div>
@@ -748,14 +751,14 @@ const CreativePortfolio = () => {
                   <div>
                     <div className="text-sm uppercase tracking-wider text-gray-500 mb-3">Location</div>
                     <div className="text-lg text-gray-300">
-                      Based in San Francisco, CA<br/>
+                      Based in Mathura, India<br/>
                       Working remotely worldwide
                     </div>
                   </div>
 
                   <div className="pt-8 border-t border-gray-800">
                     <div className="text-sm text-gray-400 leading-relaxed">
-                      I typically respond within 24 hours. For urgent inquiries, feel free to reach out via LinkedIn.
+                    We typically respond within 24 hours. For urgent inquiries, feel free to reach out via LinkedIn or email.
                     </div>
                   </div>
                 </div>
