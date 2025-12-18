@@ -27,9 +27,9 @@ const CreativePortfolio = () => {
   const projects = [
     {
       title: 'Gym Website',
-      client: 'Fitness Brand',
+      client: 'UrbanFit - Gym Services',
       year: '2024',
-      description: 'High-performance fitness website focused on lead generation and class bookings.',
+      description: 'High-performance fitness website focused on lead generation.',
       challenge: 'Low conversion and outdated UI.',
       solution: 'Modern UI, fast load times, mobile-first layout.',
       results: ['+3x inquiry rate', '<2s load time'],
@@ -38,7 +38,8 @@ const CreativePortfolio = () => {
         '/assets/work/gym/1.png',
         '/assets/work/gym/2.png',
         '/assets/work/gym/3.png',
-        '/assets/work/gym/4.png'
+        '/assets/work/gym/4.png',
+        '/assets/work/gym/5.png'
       ]
     },
     {
