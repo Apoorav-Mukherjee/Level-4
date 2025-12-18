@@ -846,7 +846,7 @@ const CreativePortfolio = () => {
               Instagram <Instagram size={20} className="inline-block" />
             </a>
             <a href="https://x.com/ApbrosSolutions" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300 text-sm uppercase tracking-wider">
-              X /<Twitter size={20} className="inline-block" />
+              X/<Twitter size={20} className="inline-block" />
             </a>
           </div>
         </div>
