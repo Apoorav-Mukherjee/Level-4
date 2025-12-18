@@ -34,6 +34,7 @@ const CreativePortfolio = () => {
       solution: 'Modern UI, fast load times, mobile-first layout.',
       results: ['+3x inquiry rate', '<2s load time'],
       tags: ['React', 'Tailwind', 'Vite'],
+      url: 'https://urban-fit-beta.vercel.app/',
       images: [
         '/assets/work/gym/1.png',
         '/assets/work/gym/2.png',
@@ -553,15 +554,33 @@ const CreativePortfolio = () => {
                               </div>
                             </div>
 
-                            <div className="flex flex-wrap gap-2 pt-4">
-                              {project.tags.map((tag, i) => (
-                                <span
-                                  key={i}
-                                  className="px-4 py-2 border border-gray-700 text-sm uppercase tracking-wider hover:bg-white hover:text-black transition-colors duration-300"
+                            <div className="flex flex-wrap gap-2 pt-4 items-center justify-between">
+                              <div className="flex flex-wrap gap-2">
+                                {project.tags.map((tag, i) => (
+                                  <span
+                                    key={i}
+                                    className="px-4 py-2 border border-gray-700 text-sm uppercase tracking-wider hover:bg-white hover:text-black transition-colors duration-300"
+                                  >
+                                    {tag}
+                                  </span>
+                                ))}
+                              </div>
+
+                              {project.url ? (
+                                <a
+                                  href={project.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-sm uppercase tracking-wider text-gray-300 hover:text-white flex items-center gap-2"
                                 >
-                                  {tag}
+                                  <span>Visit Site</span>
+                                  <ArrowRight size={16} />
+                                </a>
+                              ) : (
+                                <span className="text-xs uppercase tracking-wider text-gray-500">
+                                  Link coming soon
                                 </span>
-                              ))}
+                              )}
                             </div>
                           </div>
                         </div>
