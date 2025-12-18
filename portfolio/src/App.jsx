@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Menu, X, ArrowRight, ChevronLeft, ChevronRight, Mail, Linkedin, Github, Coffee } from 'lucide-react';
+import { Menu, X, ArrowRight, ChevronLeft, ChevronRight, Mail, Linkedin, Github, Coffee, Instagram, Twitter } from 'lucide-react';
 
 const CreativePortfolio = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -631,14 +631,17 @@ const CreativePortfolio = () => {
                       We are a team of developers and designers who love solving complex problems with simple, elegant solutions.
                     </p>
                     <div className="flex gap-4">
-                      <a href="#" className="p-3 border border-gray-700 hover:bg-white hover:text-black transition-all duration-300">
+                      <a href="https://www.linkedin.com/in/apbros-solutions-01215b395" target="_blank" rel="noopener noreferrer" className="p-3 border border-gray-700 hover:bg-white hover:text-black transition-all duration-300">
                         <Linkedin size={20} />
                       </a>
-                      <a href="#" className="p-3 border border-gray-700 hover:bg-white hover:text-black transition-all duration-300">
+                      <a href="https://github.com/APBROS-Solutions" target="_blank" rel="noopener noreferrer" className="p-3 border border-gray-700 hover:bg-white hover:text-black transition-all duration-300">
                         <Github size={20} />
                       </a>
-                      <a href="#" className="p-3 border border-gray-700 hover:bg-white hover:text-black transition-all duration-300">
-                        <Mail size={20} />
+                      <a href="https://www.instagram.com/apbrossolutions/" target="_blank" rel="noopener noreferrer" className="p-3 border border-gray-700 hover:bg-white hover:text-black transition-all duration-300">
+                        <Instagram size={20} />
+                      </a>
+                      <a href="https://x.com/ApbrosSolutions" target="_blank" rel="noopener noreferrer" className="p-3 border border-gray-700 hover:bg-white hover:text-black transition-all duration-300">
+                        <Twitter size={20} />
                       </a>
                     </div>
                   </div>
@@ -733,16 +736,16 @@ const CreativePortfolio = () => {
                   <div>
                     <div className="text-sm uppercase tracking-wider text-gray-500 mb-3">Social</div>
                     <div className="space-y-2">
-                      <a href="#" className="block text-lg hover:text-gray-400 transition-colors duration-300">
+                      <a href="https://www.linkedin.com/in/apbros-solutions-01215b395" target="_blank" rel="noopener noreferrer" className="block text-lg hover:text-gray-400 transition-colors duration-300">
                         LinkedIn → 
                       </a>
-                      <a href="#" className="block text-lg hover:text-gray-400 transition-colors duration-300">
+                      <a href="https://github.com/APBROS-Solutions" target="_blank" rel="noopener noreferrer" className="block text-lg hover:text-gray-400 transition-colors duration-300">
                         GitHub → 
                       </a>
-                      <a href="#" className="block text-lg hover:text-gray-400 transition-colors duration-300">
+                      <a href="https://www.instagram.com/apbrossolutions/" target="_blank" rel="noopener noreferrer" className="block text-lg hover:text-gray-400 transition-colors duration-300">
                         Instagram → 
                       </a>
-                      <a href="#" className="block text-lg hover:text-gray-400 transition-colors duration-300">
+                      <a href="https://x.com/ApbrosSolutions" target="_blank" rel="noopener noreferrer" className="block text-lg hover:text-gray-400 transition-colors duration-300">
                         X → 
                       </a>
                     </div>
@@ -833,14 +836,17 @@ const CreativePortfolio = () => {
             © 2026 APBROS. All rights reserved.
           </div>
           <div className="flex gap-6">
-            <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300 text-sm uppercase tracking-wider">
-              LinkedIn <Linkedin size={20} className="inline-block" text-gray-400 hover:text-white transition-colors duration-300 inline-block />
+            <a href="https://www.linkedin.com/in/apbros-solutions-01215b395" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300 text-sm uppercase tracking-wider">
+              LinkedIn <Linkedin size={20} className="inline-block" />
             </a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300 text-sm uppercase tracking-wider">
-              GitHub <Github size={20} className="inline-block" text-gray-400 hover:text-white transition-colors duration-300 inline-block />
+            <a href="https://github.com/APBROS-Solutions" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300 text-sm uppercase tracking-wider">
+              GitHub <Github size={20} className="inline-block" />
             </a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300 text-sm uppercase tracking-wider">
-              Email <Mail size={20} className="inline-block" text-gray-400 hover:text-white transition-colors duration-300 inline-block />
+            <a href="https://www.instagram.com/apbrossolutions/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300 text-sm uppercase tracking-wider">
+              Instagram <Instagram size={20} className="inline-block" />
+            </a>
+            <a href="https://x.com/ApbrosSolutions" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300 text-sm uppercase tracking-wider">
+              X <Twitter size={20} className="inline-block" />
             </a>
           </div>
         </div>
