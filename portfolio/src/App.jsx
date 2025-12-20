@@ -51,7 +51,7 @@ const CreativePortfolio = () => {
       challenge: 'No online visibility and poor UX.',
       solution: 'Elegant design, clear CTAs, optimized menu layout.',
       results: ['Increased table reservations', 'Better mobile engagement'],
-      tags: ['React', 'CSS', 'Netlify'],
+      tags: ['React', 'CSS', 'Vercel'],
       images: [
         '/assets/work/restaurant/1.png',
         '/assets/work/restaurant/2.png',
@@ -62,13 +62,14 @@ const CreativePortfolio = () => {
     },
     {
       title: 'Cafe Website',
-      client: 'Cafe Brand',
-      year: '2024',
-      description: 'Minimal aesthetic cafe website with storytelling focus.',
+      client: 'Brew Haven Cafe',
+      year: '2020',
+      description: 'A cafe website with a minimalistic design and a focus on storytelling.',
       challenge: 'Weak brand identity online.',
       solution: 'Visual-first layout with smooth animations.',
       results: ['Improved brand recall', 'Higher social traffic'],
-      tags: ['React', 'Framer Motion'],
+      tags: ['React', 'Tailwind CSS'],
+      url: 'https://brew-haven-cafe-steel.vercel.app/',
       images: [
         '/assets/work/cafe/1.png',
         '/assets/work/cafe/2.png',
