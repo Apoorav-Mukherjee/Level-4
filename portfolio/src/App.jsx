@@ -55,7 +55,7 @@ const CreativePortfolio = () => {
       images: [
         '/assets/work/restaurant/1.png',
         '/assets/work/restaurant/2.png',
-        '/assets/work/restaurant/3.png',
+        '/assets/work/restaurant/3.png',  
         '/assets/work/restaurant/4.png',
         '/assets/work/restaurant/5.png'
       ]
@@ -73,7 +73,9 @@ const CreativePortfolio = () => {
       images: [
         '/assets/work/cafe/1.png',
         '/assets/work/cafe/2.png',
-        '/assets/work/cafe/3.png'
+        '/assets/work/cafe/3.png',
+        '/assets/work/cafe/4.png',
+        '/assets/work/cafe/5.png'
       ]
     },
     {
